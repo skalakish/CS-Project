@@ -14,10 +14,10 @@ class Graph:
         else:
             print("Error: Vertex does not exist in the graph.")
 
-    def add_edge(self, vertex1, vertex2):
+    def add_edge(self, v1, v2):
         if v1 in self.matrix and v2 in self.matrix:
-            self.matrix[vertex1][vertex2] = 1
-            self.matrix[vertex2][vertex1] = 1
+            self.matrix[v1][v2] = 1
+            self.matrix[v2][v1] = 1
         else:
             print("Error: One or both vertices do not exist in the graph.")
 
