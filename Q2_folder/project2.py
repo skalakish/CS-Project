@@ -12,14 +12,14 @@ class Graph:
                 del self.matrix[connected_vertex][vertex]
             del self.matrix[vertex]
         else:
-            raise ValueError("Error: Vertex does not exist in the graph.")
+            print("Error: Vertex does not exist in the graph.")
 
     def add_edge(self, v1, v2):
         if v1 in self.matrix and v2 in self.matrix:
             self.matrix[v1][v2] = 1
             self.matrix[v2][v1] = 1
         else:
-            raise ValueError("Error: One or both vertices do not exist in the graph.")
+            print("Error: One or both vertices do not exist in the graph.")
 
     def remove_edge(self, vertex1, vertex2):
         if vertex1 in self.matrix and vertex2 in self.matrix:
@@ -28,7 +28,7 @@ class Graph:
             if vertex1 in self.matrix[vertex2]:
                 del self.matrix[vertex2][vertex1]
         else:
-            raise ValueError("Error: At least one vertex does not exist in the graph or there is no such edge.")
+           print("Error: At least one vertex does not exist in the graph or there is no such edge.")
 
     def display_matrix(self):
         keys = sorted(self.matrix.keys())
