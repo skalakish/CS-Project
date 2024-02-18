@@ -35,6 +35,8 @@ class Graph:
             print(row_str)
 
     def is_network_connected(self):
+        if not self.matrix:
+            return False
         visited = set()
 
         def dfs(vertex):
@@ -42,9 +44,6 @@ class Graph:
             for neighbour in self.matrix[vertex]:
                 if neighbour not in visited:
                     dfs(neighbour)
-
-        if not self.matrix:
-            return False
 
         v_st = next(iter(self.matrix))
         dfs(v_st)
