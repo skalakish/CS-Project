@@ -1,0 +1,16 @@
+Game Idea: Crypto Currency Trading Game
+Idea: a player (he) will be given different cryptocurrencies, and he will choose one. He will choose a crypto and will be given an amount of money to trade with. He will then trade for a fixed period. The game aims to make a profit.
+Requirements:
+•	Constant Graph to trace the cryptocurrency.
+  o	Matplotlib (library)
+•	Random number generator to generate the cryptocurrency value.
+  o	Crypto engine(class)
+•	Profit Engine
+  o	Algorithm to track profit(function)
+•	Timer for the fixed trading time
+  o	Time (library)
+•	Interface implementation
+  o	Tkinter (library)
+•	Player class
+
+
