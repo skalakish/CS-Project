@@ -1,0 +1,25 @@
+The GUI interface (): Alex
+  •	There should be an initial loading screen to welcome players.
+  •	The main screen that would hold the simulating graph of the cryptocurrency.
+  •	The last screen should show the game analysis.
+  •	I think you should use TKinter
+
+The cryptocurrency simulator (): Michael
+  •	A class that will contain the function for generating the values of the cryptocurrency.
+The profit engine (): Michael
+  •	A mechanism to keep track of the investments of the player, trades, and profit.
+
+The graph:  Antoine
+  •	The mechanism for plotting the graph of the cryptocurrency and the pausing and unpausing. 
+  •	This should be integrated with the GUI.
+  •	This should also include the analysis plots.
+
+
+The after-game analysis:  ABDULRAHMAN
+  •	This should include a sorting algorithm which will display the highest and lowest prices.
+  •	There should also be min and max heaps to keep track of the prices throughout the game.
+  •	There should also be a standard function for selecting a random cryptocurrency.
+
+`If you have any questions, you can text me on the group chat
+ I also think we should have a call on Thursday. Let me know what you think
+
