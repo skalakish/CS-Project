@@ -9,13 +9,14 @@ import sqlite3
 import hashlib
 import random
 import heapq
-
+# Global list to store instances of cryptocurrencies
 global cryptolist
 cryptolist = []
 
 # Class to Model a cryptocurrency:
 class CryptoCurrency():
     def __init__(self, name, startprice, drift, volatility, N , jump_chance, jump_magnitude) -> None:
+        # Initialize attributes of the cryptocurrency
         self.startprice = startprice
         self.drift = drift
         self.volatility = volatility
@@ -107,26 +108,28 @@ class PlotApp():
                 self.ax.set_ylim(min(self.y) - buffer, max(self.y) + buffer)
                 self.canvas.draw()
 
-                # Update min and max heaps
+          # Call the update_heaps method of profit_engine to update heaps
                 self.profit_engine.update_heaps(new_data)
-
+ # Schedule the update_plot method to be called again after 100ms
             self.master.after(100, self.update_plot)
         elif self.current_index == self.total_points:
+  # If simulation is completed, calculate game result
             self.profit_engine.calculate_game_result(self.app)
 
 # Class to manage financial aspects of the game
 class ProfitEngine():
     def __init__(self, frame, graphplotter) -> None:
+# Initialize profit engine with required attributes
         self.graph_plotter = graphplotter
         self.min_heap = []  # Min heap to track minimum prices
         self.max_heap = []  # Max heap to track maximum prices
 
-        self.capital = tk.DoubleVar(value=10000)
-        self.capital_for_checking = 10000
+        self.capital = tk.DoubleVar(value=10000) # Variable to track capital
+        self.capital_for_checking = 10000  # Initial capital for checking
 
-        self.investment_quantity = tk.DoubleVar(value=0)
+        self.investment_quantity = tk.DoubleVar(value=0) # Variable to track investment quantity
 
-        self.gains = tk.DoubleVar(value=0)
+        self.gains = tk.DoubleVar(value=0)# Variable to track gains
 # Buttons for buying and selling
         self.buy_button = tk.Button(frame, text="BUY", command=self.invest)
         self.buy_button.grid(column=0, row=1, columnspan=2)
@@ -156,7 +159,7 @@ class ProfitEngine():
                                                   font=("Roboto", 12), fg="white", bg="#263238")
         self.investment_amount_display.grid(column=1, row=5)
 
-        self.game_over = False 
+        self.game_over = False # Flag to indicate game over state
         
 # Method to handle monetary input for investment
     def handle_monetary_input_invest(self): # this needs to be implemented in line with the GUI
@@ -303,6 +306,7 @@ cryptolist.append(ethereum)
 # Class to handle user authentication and registratio
 class Login_handler():
     def __init__(self, app) -> None:
+         # Initialize login handler with required attributes
         self.app = app
         #self.login_status = False
         self.conn = sqlite3.connect('user_credentials.db')
