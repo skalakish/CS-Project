@@ -13,8 +13,7 @@ import heapq
 global cryptolist
 cryptolist = []
 
-
-
+# Class to Model a cryptocurrency:
 class CryptoCurrency():
     def __init__(self, name, startprice, drift, volatility, N , jump_chance, jump_magnitude) -> None:
         self.startprice = startprice
@@ -25,7 +24,7 @@ class CryptoCurrency():
         self.jump_magnitude = jump_magnitude
         self.name = name
         self.prices = []
-
+# Method to simulate profit fluctuations in th crypto currency
     def simulation_engine(self):
         prices = [self.startprice]
         volatility = self.volatility
@@ -49,12 +48,12 @@ class CryptoCurrency():
             prices.append(new_price)
 
         self.prices = prices
-
+# Method to get the next price in simulated data
     def get_next_price(self, index):
         if index < len(self.prices) :
             return self.prices[index]
         return None
-    
+# Class to manage plotting the cryptocurrency prices    
 class PlotApp():
     def __init__(self, app, root_window, master, chosen_crypto, total_points,  frame_display, profitengine = None):
         self.app = app
@@ -81,20 +80,20 @@ class PlotApp():
         self.canvas.draw()
         self.canvas.get_tk_widget().grid(row = 0, column=0, sticky = "NSEW")
 
-
+#Button to pause / unpause simulation
         self.unpause_button = tk.Button(master, text="Start simulation", command=self.unpause_plot)
         self.unpause_button.grid(row = 1, column=1)
 
         self.update_plot()  # Start the plot update loop
-
+# Method to pause the plot
     def pause_plot(self):
         self.plot_paused = True
-
+# Method to unpause the plot and start simulation
     def unpause_plot(self):
         if self.plot_paused == True:
             self.plot_paused = False
             self.update_plot()
-
+# Method to update the plot with new data points
     def update_plot(self):
         global current_price
         if not self.plot_paused and self.current_index < self.total_points:
@@ -115,7 +114,7 @@ class PlotApp():
         elif self.current_index == self.total_points:
             self.profit_engine.calculate_game_result(self.app)
 
-            
+# Class to manage financial aspects of the game
 class ProfitEngine():
     def __init__(self, frame, graphplotter) -> None:
         self.graph_plotter = graphplotter
@@ -128,13 +127,13 @@ class ProfitEngine():
         self.investment_quantity = tk.DoubleVar(value=0)
 
         self.gains = tk.DoubleVar(value=0)
-
+# Buttons for buying and selling
         self.buy_button = tk.Button(frame, text="BUY", command=self.invest)
         self.buy_button.grid(column=0, row=1, columnspan=2)
 
         self.sell_button = tk.Button(frame, text="SELL", command=self.sell)
         self.sell_button.grid(column=0, row=2, columnspan=2)
-
+# Label to display gains, capital and investment amount
         self.gains_display = tk.Label(frame, text="GAINS", font=("Roboto", 12), fg="white", bg="#263238")
         self.gains_display.grid(column=0, row=3)
 
@@ -147,7 +146,7 @@ class ProfitEngine():
 
         self.capital_display = tk.Label(frame, text="CAPITAL", textvariable=self.capital, font=("Roboto", 12),
                                         fg="white", bg="#263238")
-        self.capital_display.grid(column=1, row=4)
+        self.capital_display.grid(column=1, row=4) 
 
         self.investment_amount_display = tk.Label(frame, text="INVESTMENT AMOUNT", font=("Roboto", 12), fg="white",
                                                   bg="#263238")
@@ -159,7 +158,7 @@ class ProfitEngine():
 
         self.game_over = False 
         
-
+# Method to handle monetary input for investment
     def handle_monetary_input_invest(self): # this needs to be implemented in line with the GUI
         while True:
             try:
@@ -173,7 +172,7 @@ class ProfitEngine():
             else:
                 return money
             
-
+ # Method to handle quantity input for selling
     def handle_quantity_input_sell(self): # this needs to be implemented in line with the GUI
         while True:
             try:
@@ -188,6 +187,7 @@ class ProfitEngine():
                 return quantity
 
  
+    # Method to invest in cryptocurrency
     def invest(self):
         try:
             if current_price:
@@ -208,7 +208,7 @@ class ProfitEngine():
             messagebox.showerror("Error", "You must start the simulation before trading")
 
 
-
+# Method to sell cryptocurrency
     def sell(self):
         try:
             if current_price:
@@ -226,7 +226,7 @@ class ProfitEngine():
                         messagebox.showerror("Error", "You cannot sell zero")
         except NameError:
             messagebox.showerror("Error", "You must start the simulation before trading")
-
+   # Method to sell cryptocurrency for checking winning condition
     def sell_for_checking_winning_condition(self):
         try:
             if current_price:
@@ -242,11 +242,11 @@ class ProfitEngine():
         except NameError:
             messagebox.showerror("Error", "You must start the simulation before trading")
 
-
+ # Method to update heaps with new price
     def update_heaps(self, price):
         heapq.heappush(self.min_heap, price)  # Push price to min heap
         heapq.heappush(self.max_heap, -price)  # Push negative price to max heap (to simulate max heap behavior)
-
+ # Method to calculate game result
     def calculate_game_result(self, app):
         self.sell_for_checking_winning_condition()
         current_capital  = self.capital.get() + self.gains.get()
@@ -300,6 +300,7 @@ cryptolist.append(litecoin)
 cryptolist.append(bitcoin)
 cryptolist.append(ethereum)
 
+# Class to handle user authentication and registratio
 class Login_handler():
     def __init__(self, app) -> None:
         self.app = app
@@ -307,27 +308,27 @@ class Login_handler():
         self.conn = sqlite3.connect('user_credentials.db')
         self.cursor = self.conn.cursor()
 
-
+ # Create users table if not exists
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS users
                         (id INTEGER PRIMARY KEY, username TEXT, password TEXT)''')
         self.conn.commit()
             
-
+  # Method to hash the password
     def hash_password(self, password):
         return hashlib.sha256(password.encode()).hexdigest()
 
-
+# Method to verify login credentials
     def verify_login(self, username, password):
         hashed_password = self.hash_password(password)
         self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, hashed_password))
         return self.cursor.fetchone() is not None
 
-
+ # Method to register a new user
     def register(self, username, password):
         hashed_password = self.hash_password(password)
         self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
         self.conn.commit()
-
+ # Method to handle user login
     def login(self, username, password, loadingscreen):
         loadingscreen = loadingscreen
         username = username
@@ -338,7 +339,7 @@ class Login_handler():
             self.app.loading_screen()
         else:
             messagebox.showerror("Login Failed", "Invalid username or password")
-            
+   # Method to register a new account          
     def register_account(self, username, password):
         username = username
         password = password
@@ -352,7 +353,7 @@ class Login_handler():
 
 
 
-
+# Main application class
 
 class App(tk.Tk):
     def __init__(self):
@@ -364,10 +365,10 @@ class App(tk.Tk):
         self.plot_paused = False
         self.withdraw()
         self.appsequence()
-
+# Method to sequence the application
     def appsequence(self):
         self.login_screen()
-        
+   # Method to display login screen       
     def login_screen(self):
         login_window = tk.Toplevel(self)
         login_window.configure(bg="#263238")
@@ -403,14 +404,14 @@ class App(tk.Tk):
 
         login_button = ttk.Button(frame, text="Login", command = lambda: self.login_handler.login(entry1.get(), entry2.get(), login_window))
         login_button.pack(pady=6)
-
+  
         register_button = ttk.Button(frame, text="Register", command=lambda: self.login_handler.register_account(entry1.get(), entry2.get()))
         register_button.pack(pady=6)
-    
+    # Method to transition to loading window
     def transition_to_main(self, loading_window):
         loading_window.destroy()
         self.choose_crypto()
-        
+    # Method to create the loading screen      
     def loading_screen(self):
         loading_window = tk.Toplevel(self)
         loading_window.geometry("300x150")
@@ -425,7 +426,7 @@ class App(tk.Tk):
         progressbar.start()
 
         loading_window.after(1000, lambda: self.transition_to_main(loading_window))
-
+# Method to choose the cryptocurrency
     def choose_crypto(self):
         choice_window = tk.Toplevel(self)
 
@@ -441,7 +442,7 @@ class App(tk.Tk):
         litecoin_button = tk.Button(choice_window, text="LITECOIN", command=lambda: self.make_choice("Litecoin", choice_window))
         litecoin_button.pack()
 
-
+    # Method to didplay dialog box of choice made
     def make_choice(self, choice, window):
         global Crypto
         messagebox.showinfo("Choice", f"You chose {choice}")
@@ -451,42 +452,52 @@ class App(tk.Tk):
                 window.destroy()
                 self.main_window()
 
-
+#Method to End the game
     def end_game(self):
         self.destroy()
         
 
-
+# Method to create and display the main window of the application
     def main_window(self):
+     # Create a new top-level window
         main_window = tk.Toplevel(self)
+    # Maximize the window
         main_window.state("zoomed")
+     # Set the title of the window
         main_window.title("Main Window")
+     # Set the background color of the window
         main_window.configure(bg="#263238")
+       # Configure column 0 to resize with the window
         main_window.columnconfigure(0, weight =1)
+  # Configure row 1 to resize with the window
         main_window.rowconfigure(1, weight =1)
-
+        
+# Create a frame to display information
+        
         frame_display = tk.Frame(main_window, bg="#113238")
         frame_display.grid(column = 1, row =1 , sticky="NSEW")
         
-
+ # Create a frame to display the graph
         frame_graph = tk.Frame(main_window, bg="#261038")
         frame_graph.grid(column = 0, row =1, sticky= "NSEW")
+        # Configure the frame to resize with the window
         frame_graph.columnconfigure(0, weight = 1)
         frame_graph.rowconfigure(0, weight = 1)
         
-
+# Create a label to display the title of the application
         label = tk.Label(main_window, text="Crypto Market Simulator", font=("Roboto", 24), fg="white", bg="#263238")
         label.grid(column = 0, row = 0, columnspan=3, sticky = "W")
 
-
+  # Create a button to quit the game
         quit_game_button = ttk.Button(frame_display, text="Quit Game", command=lambda: self.end_game())
         quit_game_button.grid(column = 0, row = 0, columnspan=2)
-
+# Initialize variables for profit engine and graph plotter
         profit_engine = None
         graph_plotter = PlotApp( self, main_window, frame_graph, Crypto, 365, frame_display, profit_engine)
-        
-        
+
+# Method to display statistics window
     def statistics_window(self, profit_gained):
+ # Create a new top-level window for statistics
         stats_window = tk.Toplevel(self)
         stats_window.title("Statistics")
         stats_window.geometry("400x300")
@@ -513,6 +524,6 @@ class App(tk.Tk):
 
 
 
-
+# Create an instance of the App class and run the main event loop
 game = App()
 game.mainloop()
