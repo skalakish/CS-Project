@@ -13,7 +13,7 @@ from matplotlib.figure import Figure
 
 CRYPTOLIST = [] # global variable to store all the crypto currencies and their prices after initialisation
 
-
+#5590163
 class MaxHeap():
     """Maintain a max heap for efficient maximum element retrieval."""
     def __init__(self) -> None:
@@ -67,8 +67,10 @@ class MaxHeap():
             return self.heap[0]
         else:
             raise Exception("Empty Heap")
+#5590163
 
 
+#5590163
 class MinHeap():
     """Maintain a min heap for efficient minimum element retrieval."""
     def __init__(self) -> None:
@@ -122,8 +124,10 @@ class MinHeap():
             return self.heap[0]
         else:
             raise Exception("Empty Heap")
+#5590163
 
 
+#5590163
 class CryptoCurrency():
     """Class for simulating cryptocurrency price movements.
     
@@ -189,7 +193,7 @@ class CryptoCurrency():
         if index < len(self.prices):
             return self.prices[index]
         return None  # Return None if the requested index is out of range
-
+#5590163
     
 class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
@@ -254,17 +258,22 @@ class PlotApp():
         self.startsimulation_button.grid(row = 1, column=1)# set the position of the button
 
         self.update_plot()  # Start the plot update loop which will create the animation effect
-
+        
+##5590163
     def pause_plot(self):
         """ pause the plot when called."""
         self.plot_paused = True # set the plot paused variable to true which will pause the plot
+#5590163
 
+#5590163
     def unpause_plot(self):
         """unpause the plot when called."""
         if self.plot_paused == True:# check if the plot_paused variable is true to prevent multiple clicks on the start simulation button from breakiing the game
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
+#5590163
 
+#5590163
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
 
@@ -293,8 +302,10 @@ class PlotApp():
         elif self.current_index == self.total_points: #create a condition to end the game
             self.root_window.destroy() #  destroy the main game window
             self.profit_engine.calculate_game_result(self.app)# calculate the the result of the game
+#5590163
 
-            
+
+#5590163            
 class ProfitEngine():
     """Class for handling all the trading of cryptocurrency.
     
@@ -495,8 +506,10 @@ class ProfitEngine():
         else:
             messagebox.showinfo("Information", "Sorry, You lost, better luck next time")# display loss message
         app.statistics_window(self.min_heap, self.max_heap, self.gains.get())#call the statistics window
+#5590163
 
 
+#5590163
 class PlotAppForStatistics():
     """Class for plotting cryptocurrency price trend in the statistics window.
     
@@ -531,8 +544,10 @@ class PlotAppForStatistics():
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.master)  # Create a canvas for the figure which is like a tkinter placeholder
         self.canvas.draw()  # Render the plot
         self.canvas.get_tk_widget().pack()  # Pack the canvas into the master widget
+#5590163
 
 
+#5590163
 # Instance for bitcoin
 bitcoin = CryptoCurrency(
     startprice=2000,     # Starting price of Bitcoin
@@ -565,8 +580,9 @@ litecoin = CryptoCurrency(
     jump_magnitude=0.005,    # Magnitude of the price jump
     name = "Litecoin"
 )
+#5590163
 
-
+#5590163
 #initialize all the data for the cryptocurrencies
 def initialise_crypto_prices(): 
     """Initialise all the cryptocurrencies' prices."""
@@ -582,6 +598,7 @@ initialise_crypto_prices()# call the function to ensure that the game sarts with
 CRYPTOLIST.append(litecoin)
 CRYPTOLIST.append(bitcoin)
 CRYPTOLIST.append(ethereum)
+#5590163
 
 
 class LoginHandler():
@@ -677,17 +694,20 @@ class App(tk.Tk):
     replay_game 
     statistics_window 
     """
-    
+#5590163    
     def __init__(self):
         """Initialise the Tk module(super class) and call the application sequence."""
         super().__init__()
         self.login_handler = LoginHandler(self)  # Initialize login handling
         self.withdraw()  #  hide the initial window created
-        self.app_sequence()  # Start the application 
-
+        self.app_sequence()  # Start the application
+#5590163
+    
+#5590163
     def app_sequence(self):
         """Start the application by showing the login screen."""
         self.login_window()
+#5590163
         
     def login_window(self):
         """ Create a separate login window."""
@@ -750,6 +770,7 @@ class App(tk.Tk):
         # Auto proceed to main app after a delay
         loading_window.after(1000, lambda: self.transition_to_main(loading_window))
 
+    #5590163
     def choose_crypto(self):
         """ Allow the user to choose a cryptocurrency."""
         choice_window = tk.Toplevel(self)
@@ -766,6 +787,7 @@ class App(tk.Tk):
         ethereum_button.pack()
         litecoin_button = tk.Button(choice_window, text="LITECOIN", command=lambda: self.make_choice("Litecoin", choice_window))
         litecoin_button.pack()
+    #5590163
 
     def make_choice(self, choice, window):
         """ Handle the selection of a cryptocurrency."""
@@ -812,6 +834,7 @@ class App(tk.Tk):
         profit_engine = None
         graph_plotter = PlotApp(self, main_window, frame_graph, CRYPTO, 365, frame_display, profit_engine)
 
+    #5590163
     def quick_sort_prices(self, arr):
         """Quick sort algorithm implementation for sorting prices."""
         if len(arr) <= 1:
@@ -827,15 +850,20 @@ class App(tk.Tk):
                 else:
                     right.append(x)
             return self.quick_sort_prices(left) + middle + self.quick_sort_prices(right)  # Recursively sort and concatenate
+    #5590163
 
+    #5590163
     def calculate_maximum_possible_profit(self, min, max):
         """Calculate the maximum possible profit based on minimum and maximum prices."""
         return ((10000 / min) * max) - 10000
+    #5590163
 
+    #5590163
     def replay_game(self, window):
         """Allow the user to replay the game by choosing a new cryptocurrency."""
         window.destroy()  # Close the current statistics window
         self.choose_crypto()  # Reopen the cryptocurrency selection window
+    #5590163
 
     def statistics_window(self, minheap, maxheap, profit_gained):
         """Display statistical analysis of the simulation."""
@@ -853,6 +881,7 @@ class App(tk.Tk):
 
         maxprofit = self.calculate_maximum_possible_profit(lowest_price, highest_price)  # Calculate maximum profit
 
+        #5590163
         # Frames for displaying the controls
         frame_display = tk.Frame(stats_window, bg="#113238")
         frame_display.grid(column=1, row=0, sticky="NSEW")
@@ -860,7 +889,8 @@ class App(tk.Tk):
         # Frames for displaying the graph of prices trend
         frame_graph = tk.Frame(stats_window, bg="#261038")
         frame_graph.grid(column=0, row=0, sticky="NSEW")
-
+        #5590163
+        
         # initialise the label that will hold the highest price varible
         label_highest = tk.Label(frame_display, text=f"Highest Price: ${highest_price:.2f}")
         label_highest.pack(pady=10)
@@ -881,7 +911,7 @@ class App(tk.Tk):
         label_maximum_profit = tk.Label(frame_display, text=f"Max gains possible: ${maxprofit:.2f}")
         label_maximum_profit.pack(pady=10)
 
-
+        #5590163
         #quit button
         quit_game_button = ttk.Button(frame_display, text="Quit Game", command=lambda: self.end_game())
         quit_game_button.pack(pady=10)
@@ -891,10 +921,12 @@ class App(tk.Tk):
         replay_game_button.pack(pady=10)
 
         graph = PlotAppForStatistics(sortedprices, frame_graph, 365)  # Display a graphical representation of price trends
+        #5590163
 
  
 
 
-
+#5590163
 game = App() #game initialisation
 game.mainloop() # call to run the game
+#5590163
