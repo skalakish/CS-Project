@@ -1,12 +1,15 @@
 # Import all the relevant LIbraries
 import sqlite3
 import hashlib
+#5588504
 import numpy as np
+#5588504
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
+#5588504
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-
+#5588504
 
 
 
@@ -380,7 +383,7 @@ class ProfitEngine():
         self.investment_quantity_display.grid(column=1, row=5)
 
         
-
+#5588504
     def handle_monetary_input_invest(self):
         """Continuously prompt the user to input the amount of money they wish to invest."""
         while True:
@@ -471,7 +474,7 @@ class ProfitEngine():
         except NameError:
             # Error if trying to sell before the simulation has started
             messagebox.showerror("Error", "You must start the simulation before trading")
-
+#5588504
     def sell_for_checking_winning_condition(self):
         """Sell all remaining investments to check the final winning condition."""
         try:
