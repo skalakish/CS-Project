@@ -199,7 +199,7 @@ class CryptoCurrency():
 
 
 #5590163
-
+#5588504
     class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
     
@@ -278,7 +278,7 @@ class CryptoCurrency():
         if self.plot_paused == True:# check if the plot_paused variable is true to prevent multiple clicks on the start simulation button from breakiing the game
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
-    #5590163
+    #5588504
 #5590163
     
     def update_plot(self):
