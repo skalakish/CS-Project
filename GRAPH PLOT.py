@@ -64,6 +64,5 @@ class PlotApp:
             self.canvas.draw()
             # Schedule the next update recursively
             self.master.after(1000, self.update_plot)
-
-# Usage example:
+            
 # app = PlotApp(app, root_window, master, chosen_crypto, total_points, frame_display, profitengine
