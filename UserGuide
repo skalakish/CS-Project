@@ -1,0 +1,73 @@
+                                                      USER GUIDE
+
+Software requirements:
+•	  The latest version of python(3.12.2):
+o	This can be downloaded from the official Python website
+•	Code editor(most preferably JupyterLab):
+o	Any text editor can be used, but JupyterLab is recommended, which can be accessed by downloading Anaconda Navigator
+
+•	Python packages:
+o	Numpy: This can be installed via the terminal using the command pip install numpy. This is optional for JupyterLab users as it is already installed. 
+o	Matplotlib: This can be installed via the terminal using the command pip install matplotlib. This is optional for JupyterLab users as it is already installed.
+o	Tkinter: This can be installed via the terminal using the command pip install tkinter. This is optional for JupyterLab users as it is already installed.
+o	Hashlib: This package comes pre-installed with python
+o	Sqlite3: This package comes pre-installed with python
+•	Permission:
+o	Ensure you have the proper permissions to execute the script, especially on Linux or macOS systems.
+Hardware Requirements:
+•	While Python doesn’t require specific hardware requirements, it recommends having a minimum of 100MB of free RAM. 
+
+Instructions to run code:
+o	Before running the code, ensure the software and hardware requirements are met, especially installing Python.
+
+o	If you are working from a code editor with an integrated terminal, save the file using a “.py” extension and run it using this command: “python file_name.py”. If you have different versions of Python, you should specify as in “python3 file_name.py”.
+
+o	If you work from a code editor without an integrated terminal like Notepad, save the file using a “.py” extension. Then open the terminal that comes with the OS(for example, windows command prompt). In the terminal, navigate to the stored file's directory and then run it using this command “python file_name.py”. If you have different versions of Python, you should specify as in “python3 file_name.py”.
+
+o	Some code editors come with a run button. If you have selected the correct interpreter (this should be Python 3.12.2), the code should run automatically after clicking the button.
+
+
+
+ 
+How to play
+Choosing a Cryptocurrency:
+o	After logging in, you'll be prompted to choose a cryptocurrency to trade (Bitcoin, Ethereum, or Litecoin).
+o	Click on the respective buttons to choose your preferred cryptocurrency.
+ Main Game Interface:
+o	Once you've chosen a cryptocurrency, the main game interface will open.
+o	You'll see the live simulation of the cryptocurrency's price graph.
+o	On the right side of the interface, you can "BUY" or "SELL" the cryptocurrency based on its current price.
+o	Your current capital, investment amount, and gains will be displayed.
+
+ Buying Cryptocurrency:
+o	Click on the "BUY" button.
+o	Enter the amount you want to invest in the popup window.
+o	Confirm your investment.
+o	Your investment amount will be deducted from your capital, and the corresponding quantity of cryptocurrency will be added to your holdings.
+
+Selling Cryptocurrency:
+o	Click on the "SELL" button.
+o	Enter the quantity of cryptocurrency you want to sell in the popup window.
+o	Confirm your sale.
+o	The quantity of cryptocurrency sold will be deducted from your holdings, and your profit will be updated accordingly.
+o	Game Progress and Ending:
+o	The game runs for a simulated period of one year (365 days).
+o	After the simulation ends, you'll be notified if you've won or lost based on your final capital.
+o	You can quit the game anytime by clicking the "Quit Game" button.
+
+o	9. Viewing Statistics:
+o	After the simulation ends, a window will appear to display the statistics for the previous game.
+o	The following appears:
+-	The highest price of the cryptocurrency
+-	The lowest price of the cryptocurrency
+-	The total profit
+-	The maximum profit
+o	There are also two options asking whether you wish to “Quit Game” or “Replay”.
+
+
+Enjoy and Learn:
+o	Have fun trading cryptocurrencies in this simulated environment!
+o	Learn about trading strategies and risk management while enjoying the game.
+
+Contribution Statement:
+During the brainstorming part of the project, the group selected Michaels's idea as the best fit for the project's requirements. Later, Michael assigned each member a specific task. Alexander was to create the GUI interface. Michael was to make the simulator and profit engine. Antoine was to develop a functioning graph that would be random every time. Abdulrahman was to generate the after-game analysis. Antoine and Abdulrahman contributed to the user guide.
