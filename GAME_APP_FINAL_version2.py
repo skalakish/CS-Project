@@ -264,7 +264,7 @@ class CryptoCurrency():
         self.startsimulation_button.grid(row = 1, column=1)# set the position of the button
 
         self.update_plot()  # Start the plot update loop which will create the animation effect
-    #5588504
+
         
     #5590163
     def pause_plot(self):
@@ -279,8 +279,8 @@ class CryptoCurrency():
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
     #5590163
-
-    #5588504
+#5588504
+    
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
 
