@@ -277,12 +277,12 @@ class PlotApp():
         if self.plot_paused == True:# check if the plot_paused variable is true to prevent multiple clicks on the start simulation button from breakiing the game
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
-    #5588504
-
+    
+#5588504
     #5590163
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
-
+    
         This is done by ensuring the plot is not paued
         then, retrieving the next price from the cryptocurrency
         then, setting  self.y to the new price and plotting it
