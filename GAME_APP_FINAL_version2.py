@@ -199,7 +199,8 @@ class CryptoCurrency():
 
 
 #5590163
-class PlotApp():
+#558504
+    class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
     
     This class initialises a matplotlib graph object(animated) which is placed in a tkinter widget
@@ -279,16 +280,17 @@ class PlotApp():
             self.update_plot()# start to update the plot with the next price
     #5590163
 
-    #5590163
+    #5588504
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
-    
+
         This is done by ensuring the plot is not paued
         then, retrieving the next price from the cryptocurrency
         then, setting  self.y to the new price and plotting it
         the process is repeated after 100 milliseconds to create the animation effect
         the function also check when the graph is done plotting which signals the end of the game
         """
+    #5590163
         global CURRENT_PRICE 
         if not self.plot_paused and self.current_index < self.total_points: #ensure that the plot is actually paused  and if the current index is less than the total point which is 365
             new_data = self.chosen_crypto.get_next_price(self.current_index)# get the next_price using the get_next_price method
