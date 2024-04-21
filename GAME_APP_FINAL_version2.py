@@ -198,7 +198,7 @@ class CryptoCurrency():
 #5590163
 
 
-#5588504
+#5590163
 class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
     
@@ -229,7 +229,7 @@ class PlotApp():
     update_plot
     """
     
-
+    #5588504
     def __init__(self, app, root_window, master, chosen_crypto, total_points,  frame_display, profitengine = None):
         """ initialise the plot app with all the necessary parameters."""
         self.app = app
@@ -263,22 +263,22 @@ class PlotApp():
         self.startsimulation_button.grid(row = 1, column=1)# set the position of the button
 
         self.update_plot()  # Start the plot update loop which will create the animation effect
-    
+    #5588504
         
-    
+    #5590163
     def pause_plot(self):
         """ pause the plot when called."""
         self.plot_paused = True # set the plot paused variable to true which will pause the plot
-    
+    #5590163
 
-    
+    #5590163
     def unpause_plot(self):
         """unpause the plot when called."""
         if self.plot_paused == True:# check if the plot_paused variable is true to prevent multiple clicks on the start simulation button from breakiing the game
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
-    
-#5588504
+    #5590163
+
     #5590163
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
