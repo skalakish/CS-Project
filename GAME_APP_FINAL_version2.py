@@ -386,8 +386,6 @@ class ProfitEngine():
         self.investment_quantity_display = tk.Label(frame, text="INVESTMENT AMOUNT", textvariable=self.investment_quantity, font=("Roboto", 12), fg="white", bg="#263238")
         self.investment_quantity_display.grid(column=1, row=5)
 
-        
-
     def handle_monetary_input_invest(self):
         """Continuously prompt the user to input the amount of money they wish to invest."""
         while True:
