@@ -641,7 +641,6 @@ class LoginHandler():
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS users
                                (id INTEGER PRIMARY KEY, username TEXT, password TEXT)''')
         self.conn.commit()  # Commit changes to the database
-
     def hash_password(self, password):
         """Hash a password using SHA-256."""
         return hashlib.sha256(password.encode()).hexdigest()  # Return the hexadecimal digest of the hashed password
