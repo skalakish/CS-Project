@@ -668,7 +668,7 @@ class LoginHandler():
             # If login fails, show error message
             messagebox.showerror("Login Failed", "Invalid username or password")
 
-     def register_account(self, username, password):
+    def register_account(self, username, password):
         """Handle user registration."""
         if username and password:
             # Check if the username already exists in the database
