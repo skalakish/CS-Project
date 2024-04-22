@@ -557,7 +557,7 @@ class PlotAppForStatistics():
         self.canvas.draw()  # Render the plot
         self.canvas.get_tk_widget().pack()  # Pack the canvas into the master widget
 #5590163
-
+#5588504
 
 #5590163
 # Instance for bitcoin
