@@ -199,6 +199,7 @@ class CryptoCurrency():
 
 
 #5590163
+#5588504
     class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
     
