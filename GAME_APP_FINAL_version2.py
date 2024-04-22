@@ -810,8 +810,8 @@ class App(tk.Tk):
     def make_choice(self, choice, window):
         """ Handle the selection of a cryptocurrency."""
         global CRYPTO # setting the global avriable
-        messagebox.showinfo("Choice", f"You chose {choice}")
         window.destroy()  # Close the choice window
+        messagebox.showinfo("Choice", f"You chose {choice}")
         for cryptocurrency in CRYPTOLIST:
             if cryptocurrency.name == choice:
                 CRYPTO = cryptocurrency # set the chosen crypto cureency to the global Cryptovarible
