@@ -690,15 +690,28 @@ class LoginHandler():
             # If login fails, show error message
             messagebox.showerror("Login Failed", "Invalid username or password")
 
-    def register_account(self, username, password):
+     def register_account(self, username, password):
         """Handle user registration."""
         if username and password:
-            # If username and password are provided, register the account
-            self.register(username, password)
-            messagebox.showinfo("Registration Successful", "Account registered successfully!")
+            # Check if the username already exists in the database
+            if self.check_username_exists(username):
+                messagebox.showerror("Registration Failed", "Username already exists")
+            else:
+                # If the username doesn't exist, register the account
+                self.register(username, password)
+                messagebox.showinfo("Registration Successful", "Account registered successfully!")
         else:
             # If username or password is missing, show error message
             messagebox.showerror("Registration Failed", "Please enter both username and password")
+    
+    def check_username_exists(self, username):
+        """Check if the username exists in the database."""
+        connection = sqlite3.connect('user_credentials.db')
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        result = cursor.fetchone()
+        connection.close()
+        return result is not None
 #5568363
 
 
