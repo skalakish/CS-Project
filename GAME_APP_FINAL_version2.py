@@ -518,8 +518,27 @@ class ProfitEngine():
             messagebox.showinfo("Information", "Sorry, You lost, better luck next time")# display loss message
         app.statistics_window(self.min_heap, self.max_heap, self.gains.get())#call the statistics window
 #5590163
+#5588504
+class Leaderboard:
+    def __init__(self):
+        self.conn = sqlite3.connect('leaderboard.db')
+        self.cursor = self.conn.cursor()
+        self.create_table()
 
+    def create_table(self):
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS players
+                               (id INTEGER PRIMARY KEY, username TEXT, capital REAL, gains REAL)''')
+        self.conn.commit()
 
+    def update_player_info(self, username, capital, gains):
+        self.cursor.execute("INSERT OR REPLACE INTO players (username, capital, gains) VALUES (?, ?, ?)",
+                            (username, capital, gains))
+        self.conn.commit()
+
+    def get_leaderboard(self):
+        self.cursor.execute("SELECT username, capital, gains FROM players ORDER BY gains DESC")
+        return self.cursor.fetchall()
+#5588504
 #5590163
 class PlotAppForStatistics():
     """Class for plotting cryptocurrency price trend in the statistics window.
