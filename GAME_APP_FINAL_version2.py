@@ -18,7 +18,6 @@ CRYPTOLIST = [] # global variable to store all the crypto currencies and their p
 #5590163
 class MaxHeap():
     """Maintain a max heap for efficient maximum element retrieval."""
-    #5589546
     def __init__(self) -> None:
         """Initialize an empty list to store heap elements"""
         self.heap = []
@@ -46,7 +45,7 @@ class MaxHeap():
         if self.heap:
             self.heapify_down(0)
         return item
-    #5589546
+    
     def heapify_down(self, index):
         """Restore the max-heap property by sifting down the element at index."""
         largest = index
@@ -76,7 +75,6 @@ class MaxHeap():
 #5590163
 class MinHeap():
     """Maintain a min heap for efficient minimum element retrieval."""
-    #5589546
     def __init__(self) -> None:
         """Initialize an empty list to store heap elements."""
         self.heap = []
@@ -104,7 +102,6 @@ class MinHeap():
         if self.heap:
             self.heapify_down(0)
         return item
-    #5589546
     def heapify_down(self, index):
         """Restore the min-heap property by sifting down the element at index."""
         smallest = index
