@@ -914,7 +914,23 @@ class App(tk.Tk):
         stats_window.title("Statistics")
         stats_window.geometry("800x600")
         stats_window.resizable(False, False)
+    #5588904
+        stats_window.title("Leaderboard")
 
+        # Create Treeview widget to display leaderboard
+        leaderboard_tree = ttk.Treeview(stats_window, columns=('Username', 'Capital', 'Gains'))
+        leaderboard_tree.heading('#0', text='Rank')
+        leaderboard_tree.heading('Username', text='Username')
+        leaderboard_tree.heading('Capital', text='Capital')
+        leaderboard_tree.heading('Gains', text='Gains')
+
+        # Populate Treeview with leaderboard data
+        leaderboard_data = self.leaderboard.get_leaderboard()
+        for rank, (username, capital, gains) in enumerate(leaderboard_data, start=1):
+            leaderboard_tree.insert('', 'end', text=str(rank), values=(username, capital, gains))
+
+        leaderboard_tree.pack(expand=True, fill='both')
+    #5588504
         prices = CRYPTO.prices  # Retrieve prices from the chosen cryptocurrency
         sortedprices = self.quick_sort_prices(prices)  # Sort prices for analysis
 
