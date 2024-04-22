@@ -518,7 +518,7 @@ class ProfitEngine():
             messagebox.showinfo("Information", "Sorry, You lost, better luck next time")# display loss message
         app.statistics_window(self.min_heap, self.max_heap, self.gains.get())#call the statistics window
 #5590163
-#5588504
+
 
 #5588504
 #5590163
