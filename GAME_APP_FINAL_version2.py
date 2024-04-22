@@ -200,7 +200,7 @@ class CryptoCurrency():
 
 #5590163
 #5588504
-    class PlotApp():
+class PlotApp():
     """Class for ploting and animating cryptocurrency price movements.
     
     This class initialises a matplotlib graph object(animated) which is placed in a tkinter widget
