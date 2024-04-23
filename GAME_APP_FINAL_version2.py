@@ -915,6 +915,7 @@ class App(tk.Tk):
         stats_window.title("Statistics")
         stats_window.geometry("800x600")
         stats_window.resizable(False, False)
+        stats_window.protocol("WM_DELETE_WINDOW", self.end_game)
     #5588904
         
     #5588504
