@@ -741,13 +741,14 @@ class App(tk.Tk):
 
 
     #5568363     
+    #5588504
     def login_window(self):
         """ Create a separate login window."""
         login_window = tk.Toplevel(self)
         login_window.configure(bg="#263238")
         login_window.title("Login Screen")
         login_window.protocol("WM_DELETE_WINDOW", self.end_game)
-
+    #5588504
         # Frame for the login inputs
         frame = tk.Frame(login_window, bg="#263238")
         frame.pack(pady=20, padx=60)
@@ -784,7 +785,7 @@ class App(tk.Tk):
         """Transition from the loading screen to main application window."""
         loading_window.destroy()  # Destroy the loading window
         self.choose_crypto()  # Proceed to cryptocurrency selection
-        
+      #5588504  
     def loading_screen(self):
         """ Create a loading screen while the application processes or loads data."""
         loading_window = tk.Toplevel(self)
@@ -792,7 +793,7 @@ class App(tk.Tk):
         loading_window.title("Loading...")
         loading_window.resizable(False, False)
         loading_window.protocol("WM_DELETE_WINDOW", self.end_game)
-
+      #5588504
         label = tk.Label(loading_window, text="Loading, please wait...", font=("Roboto", 12))
         label.pack(pady=20)
 
@@ -841,7 +842,7 @@ class App(tk.Tk):
     def end_game(self):
         """ Terminate the application."""
         self.destroy()
-
+      #5588504
     def main_window(self):
         """ Create and configure the main application window after a cryptocurrency has been chosen."""
         main_window = tk.Toplevel(self) # creating the window
@@ -851,7 +852,7 @@ class App(tk.Tk):
         main_window.columnconfigure(0, weight=1)
         main_window.rowconfigure(1, weight=1)
         main_window.protocol("WM_DELETE_WINDOW", self.end_game)
-
+       #5588504
         # Frames for displaying the controls
         frame_display = tk.Frame(main_window, bg="#113238")
         frame_display.grid(column=1, row=1, sticky="NSEW")
@@ -908,6 +909,7 @@ class App(tk.Tk):
     #5590163
 
     #5589546
+    #5588504
     def statistics_window(self, minheap, maxheap, profit_gained):
         """Display statistical analysis of the simulation."""
         #set window configurations
