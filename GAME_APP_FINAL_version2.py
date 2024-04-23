@@ -291,7 +291,7 @@ class PlotApp():
         the function also check when the graph is done plotting which signals the end of the game
         """
     #5588504
-        #5590163
+        
     
         global CURRENT_PRICE 
         if not self.plot_paused and self.current_index < self.total_points: #ensure that the plot is actually paused  and if the current index is less than the total point which is 365
