@@ -272,15 +272,15 @@ class PlotApp():
         self.plot_paused = True # set the plot paused variable to true which will pause the plot
     #5590163
 
-    #5590163
+
     def unpause_plot(self):
         """unpause the plot when called."""
         if self.plot_paused == True:# check if the plot_paused variable is true to prevent multiple clicks on the start simulation button from breakiing the game
             self.plot_paused = False
             self.update_plot()# start to update the plot with the next price
-    #5590163
 
-    #5590163
+
+
     def update_plot(self):
         """Updates the graph after a cetain period of time to create an animation effect.
 
@@ -291,6 +291,7 @@ class PlotApp():
         the function also check when the graph is done plotting which signals the end of the game
         """
     #5588504
+        #5590163
     
         global CURRENT_PRICE 
         if not self.plot_paused and self.current_index < self.total_points: #ensure that the plot is actually paused  and if the current index is less than the total point which is 365
