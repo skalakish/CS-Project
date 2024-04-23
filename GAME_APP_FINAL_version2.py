@@ -746,6 +746,7 @@ class App(tk.Tk):
         login_window = tk.Toplevel(self)
         login_window.configure(bg="#263238")
         login_window.title("Login Screen")
+        login_window.protocol("WM_DELETE_WINDOW", self.end_game)
 
         # Frame for the login inputs
         frame = tk.Frame(login_window, bg="#263238")
@@ -790,6 +791,7 @@ class App(tk.Tk):
         loading_window.geometry("300x150")
         loading_window.title("Loading...")
         loading_window.resizable(False, False)
+        loading_window.protocol("WM_DELETE_WINDOW", self.end_game)
 
         label = tk.Label(loading_window, text="Loading, please wait...", font=("Roboto", 12))
         label.pack(pady=20)
@@ -809,6 +811,7 @@ class App(tk.Tk):
         """ Allow the user to choose a cryptocurrency."""
         choice_window = tk.Toplevel(self)
         choice_window.resizable(False, False)
+        choice_window.protocol("WM_DELETE_WINDOW", self.end_game)
         initialise_crypto_prices()
 
         choice_label = tk.Label(choice_window, text="Choose a Crypto Currency", font=("Roboto", 24), fg="white", bg="#263238")
@@ -847,6 +850,7 @@ class App(tk.Tk):
         main_window.configure(bg="#263238")
         main_window.columnconfigure(0, weight=1)
         main_window.rowconfigure(1, weight=1)
+        main_window.protocol("WM_DELETE_WINDOW", self.end_game)
 
         # Frames for displaying the controls
         frame_display = tk.Frame(main_window, bg="#113238")
