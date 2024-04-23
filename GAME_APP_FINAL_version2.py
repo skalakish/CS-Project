@@ -449,6 +449,9 @@ class ProfitEngine():
                         # Show error if the investment amount is zero
                         messagebox.showerror("Error", "You cannot invest zero")
                         self.graph_plotter.unpause_plot()
+                else:
+                    self.graph_plotter.unpause_plot()
+
         except NameError:
             # Error if trying to invest before the simulation has started
             messagebox.showerror("Error", "You must start the simulation before trading")
@@ -476,6 +479,9 @@ class ProfitEngine():
                         # Show error if the selling quantity is zero
                         messagebox.showerror("Error", "You cannot sell zero")
                         self.graph_plotter.unpause_plot()
+                else:
+                    self.graph_plotter.unpause_plot()
+
         except NameError:
             # Error if trying to sell before the simulation has started
             messagebox.showerror("Error", "You must start the simulation before trading")
